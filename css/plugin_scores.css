@@ -1,0 +1,6 @@
+#plugin_scores {width: 100%; }
+#plugin_scores th {text-align:left; background-color: #eee;border-bottom:1px dotted #eee;} 
+#plugin_scores td { text-align: center;border-bottom:1px dotted #eee;}
+#plugin_scores .left { text-align: left; }
+#plugin_scores .center { text-align: center; }
+#plugin_scores .faded { color: #aaa; }
