@@ -4,7 +4,7 @@ Donate link: http://www.funsite.eu/downloadable-wallpapers/
 Tags: admin,dashboard,plugin,scores
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,15 +32,18 @@ Why not? I like to be informed and there seemed to be an hidden api for this inf
 = my plugins all show zero's =
 make sure the slug name is correct. It's the name as used on the wordpress site, all lowercase and underscores replaced by dashes. (or so it seems)
 
-= it's a bit slow =
-Caching I still have to sort out.. Stay tuned.. 
-
 == Screenshots ==
 
 1. admin widget
 2. myPlugin list
 
 == Changelog ==
+
+= 1.1 =
+Added caching. The results are cached for half an hour. If you really want to change this time; it's defined in the header of the plugin as
+define('CACHE_TIMEOUT',30*60); Just change the 30*60 (30 minutes times 60 seconds) in any time you want. 
+
+If for what reason you want to clear the cache manualy, just go to the settings page and hit save. 
 
 = 1.0 =
 * First release

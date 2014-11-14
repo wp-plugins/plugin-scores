@@ -4,3 +4,4 @@
 #plugin_scores .left { text-align: left; }
 #plugin_scores .center { text-align: center; }
 #plugin_scores .faded { color: #aaa; }
+#plugin_scores .small { text-align:right; color: #aaa; font-size: 0.8em; }

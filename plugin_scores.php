@@ -1,16 +1,18 @@
 <?php
 /**
  * @package plugin_scores
- * @version 1.0
+ * @version 1.1
  */
 /*
 Plugin Name: plugin scores
 Plugin URI: http://www.funsite.eu/plugin_scores
 Description: Adds an admin dashboard widget with info on your plugins
 Author: Gerhard Hoogterp
-Version: 1.0
+Version: 1.1
 Author URI: http://www.funsite.eu/
 */
+
+define('CACHE_TIMEOUT',30*60);
 
 define('OPTION_NAME','myPluginList');
 define('HIDDEN_NAME','mpl_submit_hidden');
@@ -18,14 +20,14 @@ define('API_URL',	 'http://api.wordpress.org/plugins/info/1.0/');
 define('REVIEW_URL', 'https://wordpress.org/support/view/plugin-reviews/');
 define('PLUGIN_URL', 'https://wordpress.org/plugins/');
 
-
 /* -------------------------------------------------------------------------------------- */
 
 function RegisterPluginLinks($links, $file) {
 		$base = plugin_basename(__FILE__);
 		if ($file == $base) {
 			$links[] = '<a href="plugins.php?page=plugins_scores_settings">' . __('Settings','myPlugins') . '</a>';
-			$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/plugin-scores">' . __('A review would be appriciated.','myPlugins') . '</a>';
+			$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/plugin-scores" title="'.__('a review would be appriciated!','myPlugins').'">' . __('reviews','myPlugins') . '</a>';
+			$links[] = '<a href="http://www.funsite.eu/plugins/">' . __('Other plugins written by me','myPlugins') . '</a>';
 		}
 		return $links;
 	}
@@ -101,13 +103,21 @@ function plugin_scores_create_widget_function() {
 	foreach($pluginList as $pluginSlug) {
 		$res .= showPluginInfo($pluginSlug);
 	}
+	
+	$res .=  "<tr><td colspan='4' class='small'>".strftime('%H:%M:%S',time()).'</td></tr>';
 	$res .=  "</table>";
 	$res .=  '</div>';
 	return $res;
 }
 
 function plugin_scores_widget_function() {
-	print plugin_scores_create_widget_function();
+	$transient = 'plugin_scores';
+	$result = get_transient( $transient);
+	if ( $result === false) {
+		$result = plugin_scores_create_widget_function();
+		set_transient( $transient, $result,CACHE_TIMEOUT);
+	} 
+	print $result;
 }
 
 /* -------------------------------------------------------------------------------------- */
@@ -141,7 +151,8 @@ function plugin_scores_options() {
 
         // Save the posted value in the database
         update_option( $opt_name, $opt_val );
-
+		delete_transient( 'plugin_scores');
+        
         // Put an settings updated message on the screen
 
 		?><div class="updated"><p><strong><?php _e('settings saved.', 'myPlugins' ); ?></strong></p></div><?php
@@ -160,7 +171,8 @@ function plugin_scores_options() {
 
 	<p><?php _e("Pluginnames, one per line", 'myPlugins' ); ?><br>
 	<textarea name="<?php echo $data_field_name; ?>" style="max-width: 400px;min-height: 300px;"><?php echo $opt_val; ?></textarea>
-	</p><hr />
+	</p>
+	<hr />
 
 	<p class="submit">
 	<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
