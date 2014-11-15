@@ -1,14 +1,14 @@
 <?php
 /**
  * @package plugin_scores
- * @version 1.1
+ * @version 1.2
  */
 /*
 Plugin Name: plugin scores
 Plugin URI: http://www.funsite.eu/plugin_scores
 Description: Adds an admin dashboard widget with info on your plugins
 Author: Gerhard Hoogterp
-Version: 1.1
+Version: 1.2
 Author URI: http://www.funsite.eu/
 */
 
@@ -87,6 +87,8 @@ function showPluginInfo($pluginSlug) {
 }
  
 function plugin_scores_create_widget_function() {
+	date_default_timezone_set(get_option('timezone_string'));
+
 	$res =  '<div style="min-height: 120px">';
 	$pluginList = explode("\n",trim(get_option( OPTION_NAME )," \n"));
 	sort($pluginList);

@@ -4,7 +4,7 @@ Donate link: http://www.funsite.eu/downloadable-wallpapers/
 Tags: admin,dashboard,plugin,scores
 Requires at least: 3.0.1
 Tested up to: 4.0
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,10 @@ make sure the slug name is correct. It's the name as used on the wordpress site,
 
 == Changelog ==
 
+= 1.2 =
+Fixed the timezone for the time shown under the table. The Wordpress
+timezone setting is used.
+
 = 1.1 =
 Added caching. The results are cached for half an hour. If you really want to change this time; it's defined in the header of the plugin as
 define('CACHE_TIMEOUT',30*60); Just change the 30*60 (30 minutes times 60 seconds) in any time you want. 
@@ -50,5 +54,7 @@ If for what reason you want to clear the cache manualy, just go to the settings 
 
 == Upgrade Notice ==
 
-Nothing  yet. 
-
+= 1.2 =
+As the time under the table is also cached (to show when it was last
+renewed) you have to press the save button in the "My Plugins" screen under
+the Plugins menu. It will clear the cache.
