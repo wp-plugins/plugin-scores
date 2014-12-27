@@ -1,16 +1,18 @@
 <?php
 /**
  * @package plugin_scores
- * @version 1.2
+ * @version 1.3
  */
 /*
 Plugin Name: plugin scores
 Plugin URI: http://www.funsite.eu/plugin_scores
 Description: Adds an admin dashboard widget with info on your plugins
 Author: Gerhard Hoogterp
-Version: 1.2
+Version: 1.3
 Author URI: http://www.funsite.eu/
 */
+
+define('FS_TEXTDOMAIN','pluginscores');
 
 define('CACHE_TIMEOUT',30*60);
 
@@ -20,19 +22,33 @@ define('API_URL',	 'http://api.wordpress.org/plugins/info/1.0/');
 define('REVIEW_URL', 'https://wordpress.org/support/view/plugin-reviews/');
 define('PLUGIN_URL', 'https://wordpress.org/plugins/');
 
+
+/* -------------------------------------------------------------------------------------- */
+function my_pluginscores_TextDomain() {
+	load_plugin_textdomain(
+		FS_TEXTDOMAIN,
+		false,
+		dirname(plugin_basename(__FILE__)).'/languages/'
+	);
+}
+
+add_action('init', 'my_pluginscores_TextDomain');
+
 /* -------------------------------------------------------------------------------------- */
 
 function RegisterPluginLinks($links, $file) {
 		$base = plugin_basename(__FILE__);
 		if ($file == $base) {
-			$links[] = '<a href="plugins.php?page=plugins_scores_settings">' . __('Settings','myPlugins') . '</a>';
-			$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/plugin-scores" title="'.__('a review would be appriciated!','myPlugins').'">' . __('reviews','myPlugins') . '</a>';
-			$links[] = '<a href="http://www.funsite.eu/plugins/">' . __('Other plugins written by me','myPlugins') . '</a>';
+			$links[] = '<a href="plugins.php?page=plugins_scores_settings">' . __('Settings',FS_TEXTDOMAIN) . '</a>';
+			$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/plugin-scores" title="'.__('a review would be appriciated!',FS_TEXTDOMAIN).'">' . __('reviews',FS_TEXTDOMAIN) . '</a>';
+			$links[] = '<a href="http://www.funsite.eu/plugins/">' . __('Other plugins written by me',FS_TEXTDOMAIN) . '</a>';
 		}
 		return $links;
 	}
 
 add_filter('plugin_row_meta', 'RegisterPluginLinks',10,2);
+
+
 
 /* -------------------------------------------------------------------------------------- */
 
@@ -53,7 +69,7 @@ function plugin_scores_dashboard_widgets() {
 
 	wp_add_dashboard_widget(
                  'plugin_scores',         // Widget slug.
-                 'How do my plugins score?',      // Title.
+                 __('How do my plugins score?',FS_TEXTDOMAIN),      // Title.
                  'plugin_scores_widget_function' // Display function.
         );	
 }
@@ -64,8 +80,6 @@ function plugin_scores_headercode () {
 add_action('admin_init', 'plugin_scores_headercode',false,false,true);
 add_action('wp_dashboard_setup', 'plugin_scores_dashboard_widgets');
 
-
-
 /**
  * Create the function to output the contents of our Dashboard Widget.
  */
@@ -74,7 +88,7 @@ function showPluginInfo($pluginSlug) {
 	$info = unserialize(file_get_contents($url));
 	
 	$res = "<tr>";
-	$res .= '<th><a href="'.PLUGIN_URL.$pluginSlug.'/">'.$pluginSlug.'</a></th> ';
+	$res .= '<th><a href="'.PLUGIN_URL.$pluginSlug.'/" title="'. __("version",FS_TEXTDOMAIN).' '.$info->version.', '. __("last update:",FS_TEXTDOMAIN).' '.$info->last_updated.'">'.$pluginSlug.'</a></th> ';
 	$res .= '<td class="center'.($info->downloaded?'':' faded').'">'.(int)$info->downloaded.'</td>';
 	if ($info->rating) {
 		$res .= '<td class="center"><a href="'.REVIEW_URL.$pluginSlug.'">'.number_format((int)$info->rating/20,1).'/5</a></td>';
@@ -97,10 +111,10 @@ function plugin_scores_create_widget_function() {
 	for($cnt=0;$cnt<count($pluginList);$cnt++) { $pluginList[$cnt]=strtolower(trim($pluginList[$cnt])); }
 	$res .=  '<table id="plugin_scores">';
 	$res .=  "<thead><tr>";
-	$res .=  '	<th>Plugin</th>';
-	$res .=  '	<th class="center">Downloads</th>';
-	$res .=  '	<th class="center">Rating</th>';
-	$res .=  '	<th class="center">No.ratings</th>';
+	$res .=  '	<th>'.__('Plugin',FS_TEXTDOMAIN).'</th>';
+	$res .=  '	<th class="center">'.__('Downloads',FS_TEXTDOMAIN).'</th>';
+	$res .=  '	<th class="center">'.__('Rating',FS_TEXTDOMAIN).'</th>';
+	$res .=  '	<th class="center">'.__('No.ratings',FS_TEXTDOMAIN).'</th>';
 	$res .=  "</tr></thead>";
 	foreach($pluginList as $pluginSlug) {
 		$res .= showPluginInfo($pluginSlug);
@@ -134,7 +148,7 @@ function plugin_scores_menu() {
 
 function plugin_scores_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		wp_die( __( 'You do not have sufficient permissions to access this page.',FS_TEXTDOMAIN) );
 	}
 
     // variables for the field and option names 
@@ -157,13 +171,13 @@ function plugin_scores_options() {
         
         // Put an settings updated message on the screen
 
-		?><div class="updated"><p><strong><?php _e('settings saved.', 'myPlugins' ); ?></strong></p></div><?php
+		?><div class="updated"><p><strong><?php _e('settings saved.', FS_TEXTDOMAIN ); ?></strong></p></div><?php
 	}
 	
 	echo '<div class="wrap">';
 
     // header
-    echo "<h2>" . __( 'My plugins list', 'myPlugins' ) . "</h2>";
+    echo "<h2>" . __( 'My plugins list', FS_TEXTDOMAIN ) . "</h2>";
 
     // settings form
     ?>
@@ -171,7 +185,7 @@ function plugin_scores_options() {
 	<form name="form1" method="post" action="">
 	<input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
 
-	<p><?php _e("Pluginnames, one per line", 'myPlugins' ); ?><br>
+	<p><?php _e("Pluginnames, one per line", FS_TEXTDOMAIN ); ?><br>
 	<textarea name="<?php echo $data_field_name; ?>" style="max-width: 400px;min-height: 300px;"><?php echo $opt_val; ?></textarea>
 	</p>
 	<hr />
@@ -185,4 +199,5 @@ function plugin_scores_options() {
 <?php
 	echo '</div>';
 }
+
 ?>
