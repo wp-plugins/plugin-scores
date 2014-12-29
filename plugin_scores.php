@@ -1,21 +1,21 @@
 <?php
 /**
  * @package plugin_scores
- * @version 1.4
+ * @version 1.5
  */
 /*
 Plugin Name: plugin scores
 Plugin URI: http://www.funsite.eu/plugin_scores
 Description: Adds an admin dashboard widget with info on your plugins
 Author: Gerhard Hoogterp
-Version: 1.4
+Version: 1.5
 Author URI: http://www.funsite.eu/
 */
 
 class plugin_scores_class {
 
 	const FS_TEXTDOMAIN		= 'pluginscores';
-	const FS_PLUGINNAME		= 'pluginscores';
+	const FS_PLUGINNAME		= 'plugin-scores';
 
 	const CACHE_TIMEOUT 	= 1800;
 	const OPTION_NAME 		= 'myPluginList';
@@ -143,7 +143,7 @@ class plugin_scores_class {
 
 	function plugin_scores_options() {
 		if ( !current_user_can( 'manage_options' ) )  {
-			wp_die( __( 'You do not have sufficient permissions to access this page.',FS_TEXTDOMAIN) );
+			wp_die( __( 'You do not have sufficient permissions to access this page.',self::FS_TEXTDOMAIN) );
 		}
 
 		// variables for the field and option names 
@@ -186,7 +186,7 @@ class plugin_scores_class {
 		<hr />
 
 		<p class="submit">
-		<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
+		<input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes',self::FS_TEXTDOMAIN) ?>" />
 		</p>
 
 		</form>

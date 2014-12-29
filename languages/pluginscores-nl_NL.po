@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: plugin scores v1.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-12-29 18:24:56+0000\n"
+"PO-Revision-Date: 2014-12-29 21:57:10+0000\n"
 "Last-Translator: admin <admin@funsite.eu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -71,9 +71,9 @@ msgid "Pluginnames, one per line"
 msgstr "Pluginnamen, eentje per regel"
 
 #: plugin_scores.php:189
-#@ default
+#@ pluginscores
 msgid "Save Changes"
-msgstr ""
+msgstr "Sla de veranderingen op"
 
 #: plugin_scores.php:91
 #@ pluginscores
