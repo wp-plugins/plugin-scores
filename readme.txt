@@ -4,7 +4,7 @@ Donate link: http://www.funsite.eu/downloadable-wallpapers/
 Tags: admin,dashboard,plugin,scores
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ make sure the slug name is correct. It's the name as used on the wordpress site,
 2. myPlugin list
 
 == Changelog ==
+= 1.4 =
+Code cleanup
+
 = 1.3 =
 Added translation support. For now there's an extra dutch translation. 
 Other languages are of course appriciated. I used the "CodeStyling Localization" for my translation and it worked like a dream.

@@ -1,4 +1,4 @@
-#plugin_scores {width: 100%; }
+#plugin_scores {width: 100%; font-size: 1em; }
 #plugin_scores th {text-align:left; background-color: #eee;border-bottom:1px dotted #eee;} 
 #plugin_scores td { text-align: center;border-bottom:1px dotted #eee;}
 #plugin_scores .left { text-align: left; }

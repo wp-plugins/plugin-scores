@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: plugin scores v1.3\n"
+"Project-Id-Version: plugin scores v1.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-12-27 15:15:57+0000\n"
+"PO-Revision-Date: 2014-12-29 18:24:56+0000\n"
 "Last-Translator: admin <admin@funsite.eu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,83 +20,73 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: plugin_scores.php:43
+#: plugin_scores.php:51
 #@ pluginscores
 msgid "Settings"
 msgstr "Instellingen"
-
-#: plugin_scores.php:44
-#@ pluginscores
-msgid "a review would be appriciated!"
-msgstr "Een review wordt op prijs gesteld!"
-
-#: plugin_scores.php:44
-#@ pluginscores
-msgid "reviews"
-msgstr "reviews"
-
-#: plugin_scores.php:45
-#@ pluginscores
-msgid "Other plugins written by me"
-msgstr "Andere plugins die ik geschreven heb."
 
 #: plugin_scores.php:73
 #@ pluginscores
 msgid "How do my plugins score?"
 msgstr "Hoe scoren mijn plugins?"
 
-#: plugin_scores.php:115
+#: plugin_scores.php:114
 #@ pluginscores
 msgid "Plugin"
 msgstr "Plugin"
 
-#: plugin_scores.php:116
+#: plugin_scores.php:115
 #@ pluginscores
 msgid "Downloads"
 msgstr "Downloads"
 
-#: plugin_scores.php:117
+#: plugin_scores.php:116
 #@ pluginscores
 msgid "Rating"
 msgstr "Score"
 
-#: plugin_scores.php:118
+#: plugin_scores.php:117
 #@ pluginscores
 msgid "No.ratings"
 msgstr "Stemmen"
 
-#: plugin_scores.php:152
+#: plugin_scores.php:146
 #@ pluginscores
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet voldoende rechten voor deze pagina."
 
-#: plugin_scores.php:175
+#: plugin_scores.php:169
 #@ pluginscores
 msgid "settings saved."
 msgstr "Instellingen opgeslagen"
 
-#: plugin_scores.php:181
+#: plugin_scores.php:175
 #@ pluginscores
 msgid "My plugins list"
 msgstr "Mijn plugins lijst"
 
-#: plugin_scores.php:189
+#: plugin_scores.php:183
 #@ pluginscores
 msgid "Pluginnames, one per line"
 msgstr "Pluginnamen, eentje per regel"
 
-#: plugin_scores.php:195
+#: plugin_scores.php:189
 #@ default
 msgid "Save Changes"
 msgstr ""
 
-#: plugin_scores.php:92
+#: plugin_scores.php:91
 #@ pluginscores
 msgid "version"
 msgstr "versie"
 
-#: plugin_scores.php:92
+#: plugin_scores.php:91
 #@ pluginscores
 msgid "last update:"
 msgstr "Laatste update"
+
+#: plugin_scores.php:52
+#@ pluginscores
+msgid "Please rate me."
+msgstr "'rate'  me alstublieft."
 
