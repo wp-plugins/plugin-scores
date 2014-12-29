@@ -1,0 +1,7 @@
+#plugin_scores {width: 100%; font-size: 1em; }
+#plugin_scores th {text-align:left; background-color: #eee;border-bottom:1px dotted #eee;} 
+#plugin_scores td { text-align: center;border-bottom:1px dotted #eee;}
+#plugin_scores .left { text-align: left; }
+#plugin_scores .center { text-align: center; }
+#plugin_scores .faded { color: #aaa; }
+#plugin_scores .small { text-align:right; color: #aaa; font-size: 0.8em; }
