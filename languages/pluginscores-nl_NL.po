@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: plugin scores v1.4\n"
+"Project-Id-Version: plugin scores v1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-12-29 21:57:10+0000\n"
+"PO-Revision-Date: 2015-01-20 21:35:33+0000\n"
 "Last-Translator: admin <admin@funsite.eu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,73 +20,99 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: plugin_scores.php:51
-#@ pluginscores
-msgid "Settings"
-msgstr "Instellingen"
-
-#: plugin_scores.php:73
+#: plugin_scores.php:66
 #@ pluginscores
 msgid "How do my plugins score?"
 msgstr "Hoe scoren mijn plugins?"
 
-#: plugin_scores.php:114
+#: plugin_scores.php:107
 #@ pluginscores
 msgid "Plugin"
 msgstr "Plugin"
 
-#: plugin_scores.php:115
+#: plugin_scores.php:108
 #@ pluginscores
 msgid "Downloads"
 msgstr "Downloads"
 
-#: plugin_scores.php:116
+#: plugin_scores.php:109
 #@ pluginscores
 msgid "Rating"
 msgstr "Score"
 
-#: plugin_scores.php:117
+#: plugin_scores.php:110
 #@ pluginscores
 msgid "No.ratings"
 msgstr "Stemmen"
 
-#: plugin_scores.php:146
+#: plugin_scores.php:139
 #@ pluginscores
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Je hebt niet voldoende rechten voor deze pagina."
 
-#: plugin_scores.php:169
+#: plugin_scores.php:162
 #@ pluginscores
 msgid "settings saved."
 msgstr "Instellingen opgeslagen"
 
-#: plugin_scores.php:175
+#: plugin_scores.php:168
 #@ pluginscores
 msgid "My plugins list"
 msgstr "Mijn plugins lijst"
 
-#: plugin_scores.php:183
+#: plugin_scores.php:176
 #@ pluginscores
 msgid "Pluginnames, one per line"
 msgstr "Pluginnamen, eentje per regel"
 
-#: plugin_scores.php:189
+#: plugin_scores.php:182
 #@ pluginscores
 msgid "Save Changes"
 msgstr "Sla de veranderingen op"
 
-#: plugin_scores.php:91
+#: plugin_scores.php:84
 #@ pluginscores
 msgid "version"
 msgstr "versie"
 
-#: plugin_scores.php:91
+#: plugin_scores.php:84
 #@ pluginscores
 msgid "last update:"
 msgstr "Laatste update"
 
-#: plugin_scores.php:52
+#. translators: plugin header field 'Name'
+#: plugin_scores.php:0
 #@ pluginscores
-msgid "Please rate me."
-msgstr "'rate'  me alstublieft."
+msgid "plugin scores"
+msgstr ""
+
+#. translators: plugin header field 'PluginURI'
+#: plugin_scores.php:0
+#@ pluginscores
+msgid "http://www.funsite.eu/plugin_scores"
+msgstr ""
+
+#. translators: plugin header field 'Description'
+#: plugin_scores.php:0
+#@ pluginscores
+msgid "Adds an admin dashboard widget with info on your plugins"
+msgstr ""
+
+#. translators: plugin header field 'Author'
+#: plugin_scores.php:0
+#@ pluginscores
+msgid "Gerhard Hoogterp"
+msgstr ""
+
+#. translators: plugin header field 'AuthorURI'
+#: plugin_scores.php:0
+#@ pluginscores
+msgid "http://www.funsite.eu/"
+msgstr ""
+
+#. translators: plugin header field 'Version'
+#: plugin_scores.php:0
+#@ pluginscores
+msgid "1.5"
+msgstr ""
 
