@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: jondor
-Donate link: http://www.funsite.eu/downloadable-wallpapers/
+Donate link: http://plugins.funsite.eu/plugin-scores/
 Tags: admin,dashboard,plugin,scores
 Requires at least: 3.0.1
 Tested up to: 4.2

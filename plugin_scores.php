@@ -5,11 +5,11 @@
  */
 /*
 Plugin Name: plugin scores
-Plugin URI: http://www.funsite.eu/plugin_scores
+Plugin URI: http://plugins.funsite.eu/plugin-scores/
 Description: Adds an admin dashboard widget with info on your plugins
 Author: Gerhard Hoogterp
 Version: 1.5
-Author URI: http://www.funsite.eu/
+Author URI: http://plugins.funsite.eu/plugin-scores/
 Text Domain: pluginscores
 Domain Path: /languages
 */
