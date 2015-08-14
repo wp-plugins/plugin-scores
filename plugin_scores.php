@@ -5,29 +5,26 @@
  */
 /*
 Plugin Name: plugin scores
-Plugin URI: http://www.funsite.eu/plugin_scores
+Plugin URI: http://plugins.funsite.eu/plugin-scores/
 Description: Adds an admin dashboard widget with info on your plugins
 Author: Gerhard Hoogterp
 Version: 1.5
-Author URI: http://www.funsite.eu/
+Author URI: http://plugins.funsite.eu/plugin-scores/
+Text Domain: pluginscores
+Domain Path: /languages
 */
 
-class plugin_scores_class {
+if (!class_exists('basic_plugin_class')) {
+	require(plugin_dir_path(__FILE__).'basics/basic_plugin.class');
+}
 
-	const FS_TEXTDOMAIN		= 'pluginscores';
-	const FS_PLUGINNAME		= 'plugin-scores';
+class plugin_scores_class  extends basic_plugin_class {
 
-	const CACHE_TIMEOUT 	= 1800;
-	const OPTION_NAME 		= 'myPluginList';
-	const HIDDEN_NAME		= 'mpl_submit_hidden';
-	const API_URL			= 'http://api.wordpress.org/plugins/info/1.0/';
-	const REVIEW_URL		= 'https://wordpress.org/support/view/plugin-reviews/';
-	const PLUGIN_URL		= 'https://wordpress.org/plugins/';
+	function getPluginBaseName() { return plugin_basename(__FILE__); }
+	function getChildClassName() { return get_class($this); }
 
-
-	public function __construct() {
-		add_action('init', array($this,'myTextDomain'));
-		add_filter('plugin_row_meta', array($this,'RegisterPluginLinks'),10,2);
+    public function __construct() {
+		parent::__construct();
 		add_shortcode( 'plugin_scores', array($this,'showPluginScores') );
 		
 		add_action('admin_init', array($this,'plugin_scores_headercode'),false,false,true);
@@ -36,31 +33,27 @@ class plugin_scores_class {
 		add_action( 'admin_menu', array($this,'plugin_scores_menu') );
 	}
 
+	function pluginInfoRight($info) {  }
 	
-	function myTextDomain() {
-		load_plugin_textdomain(
-			self::FS_TEXTDOMAIN,
-			false,
-			dirname(plugin_basename(__FILE__)).'/languages/'
-		);
-	}
+	
+	const FS_TEXTDOMAIN		= 'pluginscores';
+	const FS_PLUGINNAME		= 'plugin-scores';
 
-	function RegisterPluginLinks($links, $file) {
-		$base = plugin_basename(__FILE__);
-		if ($file == $base) {
-			$links[] = '<a href="plugins.php?page=plugins_scores_settings">' . __('Settings',self::FS_TEXTDOMAIN) . '</a>';
-			$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/'.self::FS_PLUGINNAME.'#postform">' . __('Please rate me.',self::FS_TEXTDOMAIN) . '</a>';
-		
-		}
-		return $links;
-	}
-
-
+	
+	
+	
+	const CACHE_TIMEOUT 	= 1800;
+	const OPTION_NAME 		= 'myPluginList';
+	const HIDDEN_NAME		= 'mpl_submit_hidden';
+	const API_URL			= 'http://api.wordpress.org/plugins/info/1.0/';
+	const REVIEW_URL		= 'https://wordpress.org/support/view/plugin-reviews/';
+	const PLUGIN_URL		= 'https://wordpress.org/plugins/';
+	
+	
 	function showpluginScores( $atts) {
 		$res = $this->plugin_scores_create_widget_function();
 		return $res;	
 	}	
-
 
 	/**
 	* Add a widget to the dashboard.
@@ -194,6 +187,8 @@ class plugin_scores_class {
 	<?php
 		echo '</div>';
 	}
+	
+
 }
 
 
